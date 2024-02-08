@@ -17,3 +17,8 @@ You can install them using pip:
 
 ```bash
 pip install whisperx torch transformers torchaudio
+
+For Demo
+```bash
+run streamlit app.py
+
