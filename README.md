@@ -1,6 +1,6 @@
 readme
 # STT_Interview_Feedback_system
-This project provides a Speech-to-Text (STT) system with speaker diarization capabilities. It transcribes audio files into text while identifying and distinguishing speakers in the audio.
+"STT + Diarization" is a comprehensive speech processing solution integrating Speech-to-Text (STT) technology with diarization. This combination accurately transcribes spoken content while identifying individual speakers, enhancing transcription accuracy and context understanding. Applications include meeting transcriptions, call center analytics, and voice interfaces. This GitHub repository provides tools and resources for implementing STT + Diarization in various projects, fostering improved communication and accessibility through spoken content analysis.
 
 ![Alt Text](readme_pictures/STT.gif)
 
