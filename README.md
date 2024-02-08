@@ -26,3 +26,7 @@ For Demo
 run streamlit app.py
 ```
 
+Pending Section:
+1. analyze speaker 1 and speaker 2 using NLP techniques
+2. create a demo interview feedback system where both the interviewer and canidatate gets feedback
+
