@@ -1,83 +1,57 @@
-from stl_backend.core.stt_model import STTModel, STTModelWithoutDia
-import warnings
-warnings.filterwarnings("ignore")
+import streamlit as st 
+import pandas as pd
 
-model = STTModelWithoutDia()
-result = model.main(r"D:\Study\github\STT_Interview_Feedback_system\stl_backend\podcast.mp3")
-print(result)
+st.sidebar.title('STT + Diarization')
+st.sidebar.markdown('STT (Speech-to-Text) converts speech into text, while diarization segments speech by speaker.')
+option = st.sidebar.radio('Choose an option', ('Demo', 'Try it'), index=0)
+if option=="Demo":
+# Title
+    st.title('STT + Diarization (Demo)')
+    # st.write('STT (Speech-to-Text) converts speech into text, while diarization segments speech by speaker. Integrating the two allows for accurate transcriptions with speaker identification, essential for tasks like meeting summaries and call center analytics.')
+    # File uploader
+    # uploaded_file = st.file_uploader("Choose a file")
 
-# import streamlit as st
-# import whisperx
+    # Button
+    # if st.button('Transcribe'):
+    #     if uploaded_file is not None:
+    #         st.write('File uploaded')
+    #     else:
+    #         st.write('No file uploaded')
+    st.write("Original Video")
+    st.markdown(
+            """
+            <iframe width="700" height="400" src="https://www.youtube.com/embed/FRTpI2Gu1KA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            """,
+            unsafe_allow_html=True,
+        )
+    st.header("Transcribed Video without Diarization")
+    #read from txt and display
+    with open(r'D:\Study\github\STT_Interview_Feedback_system\result_without.txt', 'r') as file:
+        data = file.read().replace('\n', '')
+    st.text_area("Transcription", data, height=400, label_visibility="hidden")
+    
+    
+    st.header("Transcribed Video + Diarization")
+    
+    st.write("STT + Diarization (Video)")
+    #show video from local
+    st.video(r"D:\Study\github\STT_Interview_Feedback_system\final_video.mp4")
+    #read and show csv as dataframe
+    df = pd.read_csv(r'D:\Study\github\STT_Interview_Feedback_system\result.csv')
+    st.dataframe(df, height=400, width=700)
+    
+else:
+    st.title('STT + Diarization (Try it)')
+    st.write('STT (Speech-to-Text) converts speech into text, while diarization segments speech by speaker. Integrating the two allows for accurate transcriptions with speaker identification, essential for tasks like meeting summaries and call center analytics.')
+    # File uploader
+    st.header("Upload your audio file (Mp3, Wav)")
+    uploaded_file = st.file_uploader("Choose a file", label_visibility="hidden")
 
-# def main():
-#     st.title("Speech-to-Text with Diarization")
-
-#     # # Sidebar configuration
-#     # st.sidebar.header("Parameters")
-#     # audio_file = st.sidebar.file_uploader("Upload Audio File", type=["wav"])
-#     # device = st.sidebar.selectbox("Device", ["cuda", "cpu"])
-#     # batch_size = st.sidebar.number_input("Batch Size", min_value=1, value=4)
-#     # compute_type = st.sidebar.selectbox("Compute Type", ["float16", "int8"])
-
-#     # if st.sidebar.button("Transcribe Audio"):
-#     #     if audio_file is not None:
-#     #         audio = whisperx.load_audio(audio_file)
-
-#     #         # Transcribe audio
-#     #         model = whisperx.load_model("large-v2", device, compute_type=compute_type)
-#     #         result = model.transcribe(audio, batch_size=batch_size)
-
-#     #         # Align output
-#     #         model_a, metadata = whisperx.load_align_model(language_code=result["language"], device=device)
-#     #         result = whisperx.align(result["segments"], model_a, metadata, audio, device, return_char_alignments=False)
-
-#     #         # Diarization
-#     #         diarize_model = whisperx.DiarizationPipeline(use_auth_token="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", device=device)
-#     #         diarize_segments = diarize_model(audio, min_speakers=2, max_speakers=2)
-
-#     #         # Assign speakers to words
-#     #         result = whisperx.assign_word_speakers(diarize_segments, result)
-
-#     #         # Write results to file
-#     #         with open("result.txt", "w") as f:
-#     #             for seg in result["segments"]:
-#     #                 f.write(seg["speaker"] + " " + str(seg["start"]) + " " + seg["text"] + "\n")
-
-#     #         st.success("Transcription and diarization completed. Result saved to result.txt.")
-#     #     else:
-#     #         st.warning("Please upload an audio file.")
-            
-# import streamlit as st
-# import pandas as pd
-
-# # Use pandas to read the CSV file
-# df = pd.read_csv(r'D:\Study\github\STT_Interview_Feedback_system\result.csv')
-
-# # Use Streamlit to display the DataFrame
-# st.dataframe(df)
+    # Button
+    
     
 
-# if __name__ == "__main__":
-#     main()
+# from stl_backend.core.stt_model import STTModelWithoutDia
 
-# import pandas as pd
-
-# # Read the text file line by line
-# file_path = r"D:\Study\github\STT_Interview_Feedback_system\result.txt"
-# data = []
-# with open(file_path, "r") as file:
-#     for line in file:
-#         line = line.strip().split(" ", 2)  # Split each line into speaker, timestamp, and context
-#         data.append(line)
-        
-
-# # Create DataFrame
-# df = pd.DataFrame(data, columns=["Speaker", "Timestamp", "Context"])
-# df["Timestamp"] = pd.to_numeric(df["Timestamp"])# Convert timestamp column to numeric
-
-
-# print(df)
-
-# #save the result to csv
-# df.to_csv(r"D:\Study\github\STT_Interview_Feedback_system\result.csv", index=False)
-
+# stt = STTModelWithoutDia()
+# stt.main(r"D:\Study\github\STT_Interview_Feedback_system\stl_backend\podcast.mp3")

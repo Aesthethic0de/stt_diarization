@@ -82,8 +82,14 @@ class STTModelWithoutDia:
         result = pipe(sample)
         return result["text"]
     
+    def __save_result(self, result):
+        with open("result_without.txt", "w") as f:
+            f.write(result)
+        print("Result saved to result.txt")
+    
     def main(self, audio_file):
         result = self.__transcribe(audio_file)
+        self.__save_result(result)
         return result
         
     
