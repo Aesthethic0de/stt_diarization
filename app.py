@@ -1,3 +1,11 @@
+from stl_backend.core.stt_model import STTModel, STTModelWithoutDia
+import warnings
+warnings.filterwarnings("ignore")
+
+model = STTModelWithoutDia()
+result = model.main(r"D:\Study\github\STT_Interview_Feedback_system\stl_backend\podcast.mp3")
+print(result)
+
 # import streamlit as st
 # import whisperx
 
@@ -68,8 +76,8 @@
 # df["Timestamp"] = pd.to_numeric(df["Timestamp"])# Convert timestamp column to numeric
 
 
-print(df)
+# print(df)
 
-#save the result to csv
-df.to_csv(r"D:\Study\github\STT_Interview_Feedback_system\result.csv", index=False)
+# #save the result to csv
+# df.to_csv(r"D:\Study\github\STT_Interview_Feedback_system\result.csv", index=False)
 
