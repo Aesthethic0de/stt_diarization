@@ -1,5 +1,5 @@
 readme
-# Speech-to-Text With diarization
+# STT_Interview_Feedback_system
 
 This project provides a Speech-to-Text (STT) system with speaker diarization capabilities. It transcribes audio files into text while identifying and distinguishing speakers in the audio.
 
