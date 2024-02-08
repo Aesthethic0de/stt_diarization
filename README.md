@@ -1,7 +1,7 @@
 readme
-# Speech-to-Text Model
+# Speech-to-Text With diarization
 
-This project contains classes for transcribing audio files to text using pre-trained models.
+This project provides a Speech-to-Text (STT) system with speaker diarization capabilities. It transcribes audio files into text while identifying and distinguishing speakers in the audio..
 
 ## Installation
 
